@@ -1,0 +1,2 @@
+module BookShopsHelper
+end
