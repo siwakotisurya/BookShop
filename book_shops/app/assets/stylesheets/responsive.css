@@ -1,0 +1,72 @@
+@media only screen and (min-width: 750px){
+	#top_nav{
+		background: #5FCF80;
+		padding: 30px;
+		height: 60px;
+	}
+	.logo{
+		float:left;
+		max-width: 20%;
+		color: white;
+		padding: 0 20px;
+	}
+	.logo:hover{
+		color: green;
+	}
+	ul li{
+		color: white;
+		margin-left: 10px;
+	}
+	ul li:hover{
+		color: green;
+	}
+	nav{
+		float: right;
+	}
+	footer{
+		text-align: center;
+		margin-top: 500px;
+	}
+	.form_label{
+		width: 250px;
+		float:left;
+		margin-left: 150px;
+		margin-top:44px; 
+	}
+	.form_field{
+		float: right;
+		margin-right: 290px;
+		margin-top:40px; 
+	}
+	.form_submit{
+		float:left;
+		margin-left: 200px;
+		margin-top:50px;
+		height: 60px;
+		width: 170px;
+		background: #5FCF80;
+		color:white;
+		border-radius: 100px;
+	}
+	.error{
+		color: red;
+		text-align: center;
+	}
+	h3{
+		margin-top: 30px;
+		margin-bottom: 30px;
+	}
+	p{
+		margin-top: 10px;
+	}
+	#index_all{
+		float: left;
+		max-width: 40%;
+		margin-left: 80px;
+		margin-bottom: 20px;
+	}
+	#index_all a{
+		margin-top: 120px;
+		margin-left: 10px;
+	}
+}
