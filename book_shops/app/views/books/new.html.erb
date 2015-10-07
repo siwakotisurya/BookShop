@@ -1,0 +1,30 @@
+<div id="container">
+	<section>
+	<%if @book.errors.full_messages.any?%>
+		<%@book.errors.full_messages.each do |e|%>
+		<div class="error"><%=e%><br></div>
+		<%end%>
+		<%end%>
+		<%=form_for @book, url:{:action=>"create"} do |f|%>
+		<p>
+			<%=f.label "Enter Shop name", :class=>"form_label"%>
+			<%=f.text_field :book_name, :class=>"form_field", :placeholder=>"Eg: ekta Books"%>
+		</p>	
+		<p>
+			<%=f.label "Enter Shop Location" , :class=>"form_label"%>
+			<%=f.text_field :book_description, :class=>"form_field",:placeholder=>"Eg: lalitpur"%>
+		</p>
+		<p>
+			<%=f.label "Enter Shop Phone Number", :class=>"form_label"%>
+			<%=f.text_field :book_price, :class=>"form_field",:placeholder=>"Eg: 999999999"%>
+		</p>
+		<p>	
+			<%=f.label "Enter Shop Email Address", :class=>"form_label"%>
+			<%=f.text_field :book_author, :class=>"form_field",:placeholder=>"Eg: ekta@ekta.com"%>
+		</p>
+		<p>
+		<%=f.submit("Create New Shop", :class=>"form_submit")%>
+		</p>
+		<%end%>
+	</section>
+</div>

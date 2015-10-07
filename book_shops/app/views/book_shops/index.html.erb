@@ -6,7 +6,7 @@
 	<p><%=s.email_address%></p>
 	<p><%=s.phone_number%></p>
 	<br><br>
-<%=link_to("Store books")%>
+<%=link_to("Store books",new_book_shop_book_path(s.id))%>
 <%=link_to("Edit Shop")%>
 <%=link_to("Delete Shop")%>
 </div>
