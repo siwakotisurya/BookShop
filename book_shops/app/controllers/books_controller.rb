@@ -18,6 +18,7 @@ class BooksController < ApplicationController
     @book_shop = find_book_shop_params
     @book = @book_shop.books.new(set_db_field)
     if @book.save
+      EmailNotification.notify(@book_shop).deliver
       flash[:message] = "book shop sucessfully saved"
     end
   end

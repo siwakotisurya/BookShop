@@ -1,15 +1,15 @@
 <div id="container">
-<%@bookshops.each do |s|%>
-	<div id="index_all">
-	<h3><%=s.shop_name%></h3>
-	<p><%=s.shop_location%></p>
-	<p><%=s.email_address%></p>
-	<p><%=s.phone_number%></p>
-	<br><br>
-<%=link_to("Store books",new_book_shop_book_path(s.id))%>
-<%=link_to("View Books",book_shop_books_path(s.id))%>
-<%=link_to("Edit Shop")%>
-<%=link_to("Delete Shop")%>
+	<%@bookshops.each do |s|%>
+		<div id="index_all">
+		<h3><%=s.shop_name%></h3>
+		<p><%=s.shop_location%></p>
+		<p><%=s.email_address%></p>
+		<p><%=s.phone_number%></p>
+		<br><br>
+		<%=link_to("Store books",new_book_shop_book_path(s.id))%>
+		<%=link_to("View Books",book_shop_books_path(s.id))%>
+		<%=link_to("Edit Shop", edit_book_shop_path(s.id))%>
+		<%=link_to("Delete Shop", book_shop_path(s.id), method: :delete)%>
 </div>
 <%end%>
 </div>
