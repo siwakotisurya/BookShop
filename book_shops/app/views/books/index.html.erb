@@ -1,2 +1,15 @@
-<h1>Books#index</h1>
-<p>Find me in app/views/books/index.html.erb</p>
+<div id="container">
+<%@books.each do |s|%>
+	<div id="index_all">
+	<h3><%=s.book_name%></h3>
+	<p><%=s.book_description%></p>
+	<p>$<%=s.book_price%></p>
+	<p><%=s.book_author%></p>
+	<br><br>
+<%=link_to("Store books",new_book_shop_book_path(s.id))%>
+<%=link_to("View Books",book_shop_books_path(s.id))%>
+<%=link_to("Edit Shop")%>
+<%=link_to("Delete Shop")%>
+</div>
+<%end%>
+</div>

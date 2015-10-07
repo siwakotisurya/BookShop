@@ -2,6 +2,8 @@ class BooksController < ApplicationController
   
   layout "book_shops"
   def index
+    @book_shop = find_book_shop_params
+    @books = @book_shop.books.all
   end
 
   def show
@@ -37,6 +39,6 @@ class BooksController < ApplicationController
     BookShop.find(params[:book_shop_id])
   end
   def set_db_field
-    params.require(:book).permit(:book_name, :book_location, :book_price, :book_author)
+    params.require(:book).permit(:book_name, :book_description, :book_price, :book_author)
   end
 end
