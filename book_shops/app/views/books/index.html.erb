@@ -6,10 +6,8 @@
 	<p>$<%=s.book_price%></p>
 	<p><%=s.book_author%></p>
 	<br><br>
-<%=link_to("Store books",new_book_shop_book_path(s.id))%>
-<%=link_to("View Books",book_shop_books_path(s.id))%>
-<%=link_to("Edit Shop")%>
-<%=link_to("Delete Shop")%>
+<%=link_to("Edit Shop",edit_book_shop_book_path(@book_shop,s.id))%>
+<%=link_to("Delete Shop", book_shop_book_path(@book_shop,s.id),method: :delete)%>
 </div>
 <%end%>
 </div>

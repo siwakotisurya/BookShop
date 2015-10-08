@@ -15,7 +15,7 @@ class BookShopsController < ApplicationController
   def create
     @shop = BookShop.new(set_database_field)
     if @shop.save
-      EmailNotification.notify(@shop).deliver!
+      EmailNotification.delay(run_at: 5.minutes.from_now).notify(@shop)
       render "new"
     else
 

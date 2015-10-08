@@ -18,21 +18,31 @@ class BooksController < ApplicationController
     @book_shop = find_book_shop_params
     @book = @book_shop.books.new(set_db_field)
     if @book.save
-      EmailNotification.notify(@book_shop).deliver
+      EmailNotification.enqueue(wait: 60.seconds).notify(@book_shop)
       flash[:message] = "book shop sucessfully saved"
     end
   end
 
   def edit
+     @book_shop = find_book_shop_params
+     @book = @book_shop.books.find(params[:id])
   end
 
   def update
+    @book_shop = find_book_shop_params
+    @book = @book_shop.books.find(params[:id])
+    if @book.update(set_db_field) 
+    end
   end
 
   def delete
   end
 
   def destroy
+    @book_shop = find_book_shop_params
+    @book = @book_shop.books.find(params[:id])
+    if @book.destroy
+    end
   end
 
   private 
