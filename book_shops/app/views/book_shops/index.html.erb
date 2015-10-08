@@ -1,4 +1,7 @@
 <div id="container">
+<%if flash[:sucess]%>
+	<h3><%=flash[:sucess]%></h3>
+<%end%>	
 	<%@bookshops.each do |s|%>
 		<div id="index_all">
 		<h3><%=s.shop_name%></h3>
@@ -9,7 +12,7 @@
 		<%=link_to("Store books",new_book_shop_book_path(s.id))%>
 		<%=link_to("View Books",book_shop_books_path(s.id))%>
 		<%=link_to("Edit Shop", edit_book_shop_path(s.id))%>
-		<%=link_to("Delete Shop", book_shop_path(s.id), method: :delete)%>
+		<%=link_to("Delete Shop", book_shop_path(s.id), method: :delete, data: { confirm: 'Are you sure?' } )%>
 </div>
 <%end%>
 </div>

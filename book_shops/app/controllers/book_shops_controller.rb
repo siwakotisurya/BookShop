@@ -15,6 +15,7 @@ class BookShopsController < ApplicationController
   def create
     @shop = BookShop.new(set_database_field)
     if @shop.save
+      flash[:msg] = "Bookshop Store in a database please check your email"
       EmailNotification.delay(run_at: 5.minutes.from_now).notify(@shop)
       render "new"
     else
@@ -35,7 +36,10 @@ class BookShopsController < ApplicationController
 
   def destroy
     @shop = BookShop.find(params[:id])
-    @shop.destroy
+    if @shop.destroy
+      flash[:sucess]="#{@shop.shop_name}  Book Shop Sucessfuly Deleted"
+      redirect_to book_shops_path
+    end
   end
 
   private def set_database_field

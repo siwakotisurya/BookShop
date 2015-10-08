@@ -5,6 +5,9 @@
 		<div class="error"><%=e%><br></div>
 		<%end%>
 		<%end%>
+		<%if flash[:msg]%>
+			<div class="error"><%=flash[:msg]%></div>
+		<%end%>
 		<%=form_for @shop do |f|%>
 		<p>
 			<%=f.label "Enter Shop name", :class=>"form_label"%>

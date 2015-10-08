@@ -18,9 +18,13 @@ class BooksController < ApplicationController
     @book_shop = find_book_shop_params
     @book = @book_shop.books.new(set_db_field)
     if @book.save
-      EmailNotification.enqueue(wait: 60.seconds).notify(@book_shop)
-      flash[:message] = "book shop sucessfully saved"
+      flash[:message] = "books sucessfully saved"
+      redirect_to book_shop_books_path(@book_shop) 
+    else
+      flash[:message] = "Sorry something goes wrong cannot saved"
+      redirect_to book_shop_books_path(@book_shop)
     end
+
   end
 
   def edit
@@ -42,6 +46,8 @@ class BooksController < ApplicationController
     @book_shop = find_book_shop_params
     @book = @book_shop.books.find(params[:id])
     if @book.destroy
+      flash[:message]="#{@book.book_name}  Sucessfully Deleted"
+      redirect_to book_shop_books_path(@book_shop)
     end
   end
 
