@@ -1,5 +1,10 @@
-Rails.application.routes.draw do
- 
+BookShops::Application.routes.draw do
+  # ... other resources we have defined ...
+  resources :users
+  resources :user_sessions, only: [ :new, :create, :destroy ]
+
+  get 'login'  => 'user_sessions#new'
+  get 'logout' => 'user_sessions#destroy'
   resources :book_shops  do
     resources :books
   end
@@ -8,7 +13,8 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  root 'book_shops#index'
+  root "book_shops#index"
+
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

@@ -1,12 +1,10 @@
 class BooksController < ApplicationController
   
   layout "book_shops"
-  def index
+  #before_filter :require_login, only: [:index,:new,:create,:edit,:update,:destroy] 
+  def index 
     @book_shop = find_book_shop_params
     @books = @book_shop.books.all
-  end
-
-  def show
   end
 
   def new
@@ -37,9 +35,6 @@ class BooksController < ApplicationController
     @book = @book_shop.books.find(params[:id])
     if @book.update(set_db_field) 
     end
-  end
-
-  def delete
   end
 
   def destroy

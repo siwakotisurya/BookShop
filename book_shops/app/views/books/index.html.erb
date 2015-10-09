@@ -2,6 +2,7 @@
 <%if flash[:message]%>
 	<h3><%=flash[:message]%></h3>
 <%end%>
+<% unless @books.empty? %>
 <%@books.each do |s|%>
 	<div id="index_all">
 	<h3><%=s.book_name%></h3>
@@ -9,8 +10,14 @@
 	<p>$<%=s.book_price%></p>
 	<p><%=s.book_author%></p>
 	<br><br>
-<%=link_to("Edit Shop",edit_book_shop_book_path(@book_shop,s.id))%>
-<%=link_to("Delete Shop", book_shop_book_path(@book_shop,s.id),method: :delete, data: { confirm: 'Are you sure?' } )%>
+	<%if logged_in?%>
+<%=link_to("Edit Book",edit_book_shop_book_path(@book_shop,s.id))%>
+<%=link_to("Delete Book", book_shop_book_path(@book_shop,s.id),method: :delete, data: { confirm: 'Are you sure?' } )%>
+<%end%>
 </div>
+<%end%>
+<%else%>
+<h3>Currently There Are no Books Available</h3>
+
 <%end%>
 </div>

@@ -4,15 +4,20 @@
 <%end%>	
 	<%@bookshops.each do |s|%>
 		<div id="index_all">
+		<%=image_tag s.image.url, :id=>"shop_img"%>
 		<h3><%=s.shop_name%></h3>
 		<p><%=s.shop_location%></p>
 		<p><%=s.email_address%></p>
-		<p><%=s.phone_number%></p>
+		<p>Phone No.  <%=s.phone_number%></p>
 		<br><br>
+		<% if logged_in?%>
 		<%=link_to("Store books",new_book_shop_book_path(s.id))%>
 		<%=link_to("View Books",book_shop_books_path(s.id))%>
 		<%=link_to("Edit Shop", edit_book_shop_path(s.id))%>
 		<%=link_to("Delete Shop", book_shop_path(s.id), method: :delete, data: { confirm: 'Are you sure?' } )%>
-</div>
+		<%else%>
+		<%=link_to("View Books",book_shop_books_path(s.id))%>
+		<%end%>
+	</div>
 <%end%>
 </div>

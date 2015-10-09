@@ -1,11 +1,9 @@
 class BookShopsController < ApplicationController
   
   layout "book_shops"
+  #before_filter :require_login, only: [:index,:new,:create,:edit,:update,:destroy]
   def index
     @bookshops = BookShop.all
-  end
-
-  def show
   end
 
   def new
@@ -14,6 +12,7 @@ class BookShopsController < ApplicationController
 
   def create
     @shop = BookShop.new(set_database_field)
+    binding.pry
     if @shop.save
       flash[:msg] = "Bookshop Store in a database please check your email"
       EmailNotification.delay(run_at: 5.minutes.from_now).notify(@shop)
@@ -43,6 +42,6 @@ class BookShopsController < ApplicationController
   end
 
   private def set_database_field
-    params.require(:book_shop).permit(:shop_name, :shop_location, :phone_number, :email_address)
+    params.require(:book_shop).permit(:shop_name, :shop_location, :phone_number, :email_address, :image)
   end
 end

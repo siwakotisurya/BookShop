@@ -26,6 +26,10 @@
 			<%=f.text_field :email_address, :class=>"form_field",:placeholder=>"Eg: ekta@ekta.com"%>
 		</p>
 		<p>
+			<%=f.label "Upload Shop Logo", :class=>"form_label"%>
+			<%=f.file_field :image, :class=>"file_field",:placeholder=>"Eg: ekta@ekta.com"%>
+		</p>
+		<p>
 		<%=f.submit("Create New Shop", :class=>"form_submit")%>
 		</p>
 		<%end%>
